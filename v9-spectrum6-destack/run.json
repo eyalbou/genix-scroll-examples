@@ -1,0 +1,23 @@
+{
+    "reqId": "415d899b-5ce4-4496-942c-3f31fcc7b338",
+    "graphId": "69babd6bdadd71e33a1d1760",
+    "graph": "scroll-animation-graph-v9-product-focused.json",
+    "status": "COMPLETED",
+    "createdAt": "2026-03-22T14:25:40.048894Z",
+    "updatedAt": "2026-03-22T14:35:17.870989Z",
+    "inputs": {
+        "reference_image": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/uploads/inputs/graphs/69babd6bdadd71e33a1d1760/1774189522175-dc98tka02.png",
+        "animation_style": "explode",
+        "aspect_ratio": "16:9",
+        "creative_direction": "Layer de-stacking teardown of Nvidia Spectrum-6 chip seen from above. 5 layers separate vertically. PACING: layers separate first 50-60%, final 40% holds all floating. CAMERA: top-down to slight 15-20 degree orbit."
+    },
+    "results": {
+        "video_url": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/5827ab1d-026a-42e0-9c8b-d9c3b4db3bd9.mp4",
+        "frame_count": 241,
+        "frame_url_pattern": "https://v3b.fal.media/files/b/{hash}_frame_{num}.png"
+    },
+    "cost": {
+        "totalUsd": 1.39,
+        "runtime_seconds": 578
+    }
+}

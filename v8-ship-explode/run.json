@@ -1,0 +1,20 @@
+{
+  "id": "v8-explode-minimal",
+  "name": "V8 Ship Deconstruction (Explode Minimal)",
+  "graph": "scroll-animation-graph-v8-explode-minimal.json",
+  "run": {
+    "status": "COMPLETED",
+    "createdAt": "2026-03-11T00:00:00Z",
+    "notes": "First successful run after fixing ref_as_start/ref_as_end merge edges"
+  },
+  "inputs": {},
+  "generated_prompts": {},
+  "assets": {
+    "video_url": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/ec5b72d7-55f7-4f34-a33b-8c940f8c0cd5.mp4",
+    "start_image_url": "frames/frame_0001.png",
+    "end_image_url": "frames/frame_0169.png",
+    "frame_count": 169,
+    "frame_source": "extracted locally via ffmpeg (24fps, 1928x1072)",
+    "frame_urls": []
+  }
+}

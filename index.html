@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation Pipeline - Examples Gallery</title>
+<style>
+  :root {
+            --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            --blue: #0C6EFC;
+            --purple: #7F2275;
+            --green: #10b981;
+            --red: #ef4444;
+            --amber: #f59e0b;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+            --pink: #ec4899;
+            --teal: #14b8a6;
+            --bg-start: #0f172a;
+            --bg-mid: #1e293b;
+            --glass-bg: rgba(255,255,255,0.05);
+            --glass-border: rgba(255,255,255,0.1);
+            --glass-hover: rgba(255,255,255,0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --radius: 16px;
+            --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-start) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+    min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+
+        /* Header */
+        .page-header {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .page-header h1 {
+            font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+        .page-header h1 .wix { color: var(--text-muted); }
+        .page-header h1 .sep { color: var(--text-muted); margin: 0 12px; font-weight: 300; }
+        .page-header .subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* KPI Bar */
+        .kpi-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .kpi-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .kpi-card:nth-child(1) { animation-delay: 0.05s; }
+        .kpi-card:nth-child(2) { animation-delay: 0.1s; }
+        .kpi-card:nth-child(3) { animation-delay: 0.15s; }
+        .kpi-card:nth-child(4) { animation-delay: 0.2s; }
+        .kpi-icon { font-size: 20px; margin-bottom: 12px; }
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+        .kpi-value.blue { color: var(--blue); }
+        .kpi-value.green { color: var(--green); }
+        .kpi-value.amber { color: var(--amber); }
+        .kpi-value.violet { color: var(--violet); }
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 500;
+    color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+        .section-sub {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+        /* Gallery Grid */
+        .gallery-grid {
+    display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+            margin-bottom: 12px;
+        }
+
+        /* Cards */
+  .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeInUp 0.5s ease-out both;
+        }
+  .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px -8px rgba(0,0,0,0.4);
+  }
+        .card video {
+            width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+            display: block;
+    background: rgba(0,0,0,0.3);
+        }
+        .card-body { padding: 20px 24px 24px; }
+        .card-title {
+    font-size: 16px;
+    font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.3;
+  }
+        .card-desc {
+    font-size: 13px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-meta {
+    display: flex;
+            gap: 8px;
+            align-items: center;
+    flex-wrap: wrap;
+  }
+
+        /* Tags */
+        .tag {
+    font-size: 11px;
+    font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+        .tag.explode { background: rgba(127,34,117,0.2); border: 1px solid rgba(127,34,117,0.4); color: #c470b8; }
+        .tag.zoom { background: rgba(12,110,252,0.15); border: 1px solid rgba(12,110,252,0.35); color: #5d9dfd; }
+        .tag.grow { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.35); color: var(--green); }
+        .tag.spin { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.35); color: var(--violet); }
+        .tag.bloom { background: rgba(236,72,153,0.15); border: 1px solid rgba(236,72,153,0.35); color: var(--pink); }
+        .tag.ripple { background: rgba(20,184,166,0.15); border: 1px solid rgba(20,184,166,0.35); color: var(--teal); }
+        .tag.disassemble { background: rgba(127,34,117,0.2); border: 1px solid rgba(127,34,117,0.4); color: #c470b8; }
+        .tag.completed { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: var(--green); }
+        .tag.ready { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: var(--amber); }
+        .tag.aspect { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); color: var(--info); }
+        .tag.version { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-muted); font-family: var(--mono); font-size: 10px; }
+
+        .card-cost {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-left: auto;
+            font-family: var(--mono);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+            margin: 56px 0 48px;
+        }
+
+        /* Upcoming Grid */
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .upcoming-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            animation: fadeInUp 0.5s ease-out both;
+        }
+        .upcoming-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.18);
+        }
+        .upcoming-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+        }
+        .upcoming-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .upcoming-product {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .upcoming-tags { display: flex; gap: 8px; margin-bottom: 16px; }
+        .upcoming-dir {
+            font-size: 13px;
+            font-weight: 400;
+    color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Footer */
+        .footer {
+    text-align: center;
+            padding: 56px 0 24px;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .kpi-bar { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .upcoming-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="page-header">
+            <h1><span class="wix">WIX</span><span class="sep">|</span>Scroll Animation Pipeline</h1>
+            <p class="subtitle">Full Examples Gallery - 12 Completed Runs across 5 Graph Versions</p>
+        </div>
+
+        <p class="section-sub">Click any card to open the scroll player. Previews loop first 3 seconds.</p>
+
+        <div class="gallery-grid">
+            <a href="v9-brushes-zoom/index.html" class="card" style="animation-delay:0.05s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/0fee220b-a7e2-4290-b6ae-460634c08e6d.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Makeup Brushes - Powder Collision Zoom</div>
+                    <div class="card-desc">Macro dive into teal & magenta powder collision between crossed brush bristle tips</div>
+                    <div class="card-meta">
+                        <span class="tag zoom">zoom</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.04</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v9-coffee-explode/index.html" class="card" style="animation-delay:0.1s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/efbd3048-92bb-416a-bd48-08ae78964d1f.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Wix Coffee Machine - Dark Teardown</div>
+                    <div class="card-desc">Capsule machine deconstructs into floating components against moody dark backdrop</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.07</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v9-spectrum6-destack/index.html" class="card" style="animation-delay:0.12s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/5827ab1d-026a-42e0-9c8b-d9c3b4db3bd9.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Nvidia Spectrum-6 - Layer De-stacking</div>
+                    <div class="card-desc">5-layer vertical de-stacking teardown of Nvidia Spectrum-6 network chip, ASIC die, CPO photonics, CoWoS-L interposer</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.39</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v9-headphones-explode/index.html" class="card" style="animation-delay:0.15s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/39670201-85a2-4c8a-867a-338e02a289b4.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Headphones - Neon Teardown Explode</div>
+                    <div class="card-desc">Earcups separate from headband, revealing drivers and memory foam cushions, neon pink-blue gradient light</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.05</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v9-bouquet-explode/index.html" class="card" style="animation-delay:0.2s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/1a4af9e9-1de5-496d-81b3-25c75558e841.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Rose Bouquet - Explode (Directed)</div>
+                    <div class="card-desc">Rose bouquet exploded teardown with directed creative goal</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.07</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v9-logo-explode/index.html" class="card" style="animation-delay:0.25s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/d9500c2f-fb90-437f-b79f-31181a64019f.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Wix Logo - Explode</div>
+                    <div class="card-desc">3D Wix logo exploded teardown with directed creative goal</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.06</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v9-sneaker-explode/index.html" class="card" style="animation-delay:0.3s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/4a23e64d-0755-40ed-82e4-39a57c214e3d.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Sneaker - Explode (Auto Director)</div>
+                    <div class="card-desc">Athletic sneaker explode with fully automatic creative direction</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v9</span>
+                        <span class="card-cost">$1.07</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v8-ship-explode/index.html" class="card" style="animation-delay:0.35s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/ec5b72d7-55f7-4f34-a33b-8c940f8c0cd5.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Ship in Dry Dock - Deconstruction</div>
+                    <div class="card-desc">Cargo ship in dry dock with scaffolding, deconstructing with explode animation</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v8</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v7-watch-disassemble/index.html" class="card" style="animation-delay:0.4s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/2b148f22-fa08-419c-881f-8a4c7d7baf8d.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Space Watch Disassemble</div>
+                    <div class="card-desc">Blue space-exploration watch on asteroid disassembles with orbit camera and ethereal mist preset</div>
+                    <div class="card-meta">
+                        <span class="tag disassemble">disassemble</span>
+                        <span class="tag version">v7</span>
+                        <span class="card-cost">$6.02</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v6-fabric-ripple/index.html" class="card" style="animation-delay:0.45s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/761b56c8-1744-433b-bc82-427e82a0d368.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Fabric Ripple Macro</div>
+                    <div class="card-desc">Macro dark woven fabric - still matte folds to subtle ripple with locked camera and minimal drift</div>
+                    <div class="card-meta">
+                        <span class="tag ripple">ripple</span>
+                        <span class="tag version">v6</span>
+                        <span class="card-cost">$6.26</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v6-monstera-grow/index.html" class="card" style="animation-delay:0.5s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/a18cef10-4bab-416a-aad5-dada160c0ac5.mp4#t=0,3" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <div class="card-title">Monstera Plant Growth</div>
+                    <div class="card-desc">Time-lapse indoor monstera growth from seedlings to lush mature arrangement with cinematic preset</div>
+                    <div class="card-meta">
+                        <span class="tag grow">grow</span>
+                        <span class="tag version">v6</span>
+                        <span class="card-cost">$6.37</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="v3-watch-explode/index.html" class="card" style="animation-delay:0.55s">
+                <video muted loop playsinline preload="auto">
+                    <source src="https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/4677637c-64e9-41a9-9be1-a0f299187c96.mp4#t=0,3" type="video/mp4">
+                </video>
+      <div class="card-body">
+                    <div class="card-title">Luxury Watch Explode</div>
+                    <div class="card-desc">Mechanical watch on dark marble explodes into floating gears, springs, and case components</div>
+                    <div class="card-meta">
+                        <span class="tag explode">explode</span>
+                        <span class="tag version">v3</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="footer">Scroll Animation Pipeline - v3 through v9 - Genix</div>
+      </div>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            const v = card.querySelector('video');
+            if (!v) return;
+            v.pause();
+            v.currentTime = 0;
+            v.addEventListener('timeupdate', () => { if (v.currentTime >= 3) v.currentTime = 0; });
+            card.addEventListener('mouseenter', () => v.play());
+            card.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+        });
+</script>
+</body>
+</html>

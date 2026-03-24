@@ -1,0 +1,10 @@
+{
+    "status": "READY_TO_RUN",
+    "inputs": {
+        "reference_image": "",
+        "animation_style": "explode",
+        "aspect_ratio": "16:9",
+        "creative_direction": "earcups separate from headband, revealing 40mm drivers and memory foam cushions floating apart, hinges and adjustment sliders visible, each component catching the neon pink-blue gradient light on newly exposed surfaces"
+    },
+    "notes": "Sennheiser over-ear headphones floating on pink-to-blue neon gradient. Upload the headphones photo to get reference URL."
+}

@@ -1,0 +1,36 @@
+{
+  "id": "v9-headphones-explode",
+  "name": "V9 Headphones Neon Teardown (Explode)",
+  "graph": "scroll-animation-graph-v9-product-focused.json",
+  "run": {
+    "reqId": "49014601-0ab0-4de8-9994-7af479721af9",
+    "graphId": "69babd6bdadd71e33a1d1760",
+    "status": "COMPLETED",
+    "createdAt": "2026-03-19T17:12:43.114993Z",
+    "updatedAt": "2026-03-19T17:23:55.018476Z",
+    "duration_minutes": 11.2,
+    "cost": {
+      "byProvider": {
+        "model-hub": 15094000,
+        "fal.ai": 90400000
+      },
+      "totalMicrocents": 105494000,
+      "totalUsd": 1.05
+    }
+  },
+  "inputs": {
+    "reference_image": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/uploads/inputs/graphs/69babd6bdadd71e33a1d1760/1773939282161-2wtx842zu.png",
+    "animation_style": "explode",
+    "creative_direction": "earcups separate from headband, revealing 40mm drivers and memory foam cushions floating apart, hinges and adjustment sliders visible, each component catching the neon pink-blue gradient light on newly exposed surfaces"
+  },
+  "assets": {
+    "video_url": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/39670201-85a2-4c8a-867a-338e02a289b4.mp4",
+    "start_image_url": "frames/frame_0001.webp",
+    "end_image_url": "frames/frame_0169.webp",
+    "frame_count": 169,
+    "frame_source": "extracted locally via ffmpeg (24fps, 1764x1172) + cwebp q90"
+  },
+  "notes": {
+    "extractNthFrame_bug": "Pipeline returned frame_count:1 with a single 31.8MB animated webp instead of individual frame images. Frames extracted locally as workaround."
+  }
+}

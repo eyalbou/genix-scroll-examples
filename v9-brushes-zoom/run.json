@@ -1,0 +1,23 @@
+{
+    "reqId": "0d9066a3-e4e8-40a2-8ff7-4cec7552f426",
+    "graphId": "69babd6bdadd71e33a1d1760",
+    "status": "COMPLETED",
+    "createdAt": "2026-03-19T16:52:58.550288Z",
+    "updatedAt": "2026-03-19T16:58:46.607886Z",
+    "inputs": {
+        "reference_image": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/uploads/inputs/graphs/69babd6bdadd71e33a1d1760/1773938976514-46qqvvs9y.jpg",
+        "animation_style": "zoom",
+        "creative_direction": "push into the collision point where teal and magenta powder meet between the bristle tips, revealing individual pigment particles suspended in air and the texture of each bristle fiber"
+    },
+    "results": {
+        "video_url": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/0fee220b-a7e2-4290-b6ae-460634c08e6d.mp4",
+        "frame_urls": {
+            "frame_count": 1,
+            "expected_frame_count": 144,
+            "issue": "extractNthFrame returned 1 frame instead of ~144. Kling V3 Pro codec incompatibility."
+        }
+    },
+    "cost": {
+        "totalUsd": 1.04378
+    }
+}

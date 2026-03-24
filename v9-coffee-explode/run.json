@@ -1,0 +1,23 @@
+{
+    "reqId": "6312b76d-0710-4893-847e-a1f127eac1e3",
+    "graphId": "69babd6bdadd71e33a1d1760",
+    "status": "COMPLETED",
+    "createdAt": "2026-03-19T16:56:42.430700Z",
+    "updatedAt": "2026-03-19T17:02:50.688905Z",
+    "inputs": {
+        "reference_image": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/uploads/inputs/graphs/69babd6bdadd71e33a1d1760/1773939392229-fetqp061n.png",
+        "animation_style": "explode",
+        "creative_direction": "transparent water reservoirs detach and float outward, capsule chamber lifts revealing the brewing mechanism, drip tray slides away, nozzle assembly separates, glass mug drifts forward -- each component catching dramatic rim light on dark background, red capsule floats into prominence"
+    },
+    "results": {
+        "video_url": "https://wixmp-64e9dfbd870d81d03e5999ac.wixmp.com/genix_uploads/videos/efbd3048-92bb-416a-bd48-08ae78964d1f.mp4",
+        "frame_urls": {
+            "frame_count": 1,
+            "expected_frame_count": 144,
+            "issue": "extractNthFrame returned 1 frame instead of ~144. Kling V3 Pro codec incompatibility."
+        }
+    },
+    "cost": {
+        "totalUsd": 1.065284
+    }
+}
